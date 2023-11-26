@@ -1,0 +1,29 @@
+main {
+  display: flex;
+  height: 100vh;
+}
+
+.login-wrapper {
+  width: 40%;
+  padding: 70px 30px 50px 30px;
+  text-align: center;
+}
+
+.service-name {
+  width: 100%;
+}
+
+form input,
+button {
+  display: block;
+  width: 100%;
+}
+
+.button-wrapper {
+  display: flex;
+}
+
+.login-img {
+  width: 60%;
+  object-fit: cover;
+}
