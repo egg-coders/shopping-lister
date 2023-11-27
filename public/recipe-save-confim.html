@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レシピ登録確認画面</title>
+  <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/common.css" >
+  <link rel="stylesheet" href="css/reset.css" >
+  <link rel="stylesheet" href="css/recipe-save-confim.css">
+  <script src="/js/recipe-save-confim.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-wrapper container">
+      <h1><a href="#">Service Name</a></h1>
+      <nav>
+        <ul class="header-nav">
+          <li>
+            <a href="#"><i class="fa fa-solid fa-utensils"></i><span>レシピ登録</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-solid fa-clock-rotate-left"></i><span>リスト履歴</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-solid fa-arrow-right-from-bracket"></i><span>ログアウト</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="title-name">料理名</h2>
+    <div class="main-wrapper container">
+      <div class="cooking-contents">
+        <a class="cooking-content" href="#">
+          <img class="cooking-img" src="#" alt="料理名" >
+        </a>
+      </div>
+    </div>
+
+    <section class="feature" id="feature">
+      <div class="Item1" id="Item1">
+        <h2>個数</h2>
+        <ul id="recipe-name">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        </ul>
+        <!--ここに登録した個数を挿入-->
+      </div>
+      <div class="Item2" id="Item2">
+        <h2>材料名</h2>
+        <ul id="material-name">
+          <li>タマゴ</li>
+          <li>タマゴ</li>
+          <li>タマゴ</li>
+          <li>タマゴ</li>
+          <li>タマゴ</li>
+        </ul>
+        <!--ここに登録した材料を挿入-->
+      </div>
+    </section>
+
+    <div class="button">
+      <input id="back-button" type="button" onclick="location.href='#'" value="戻る">
+      <input id="confirm-button" type="button" onclick="location.href='#'" value="登録">
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-wrapper container">
+      <img class="team-logo" src="images/test2.png" alt="" />
+      <p class="team-name">&copy;egg corders</p>
+    </div>
+  </footer>
+</body>
+</html>

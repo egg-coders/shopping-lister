@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>買い物リスト確認画面</title>
+  <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/common.css" >
+  <link rel="stylesheet" href="css/reset.css" >
+  <link rel="stylesheet" href="css/cooking-confirm.css">
+  <script src="/js/cooking-confirm.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-wrapper container">
+      <h1><a href="#">Service Name</a></h1>
+      <nav>
+        <ul class="header-nav">
+          <li>
+            <a href="#"><i class="fa fa-solid fa-utensils"></i><span>レシピ登録</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-solid fa-clock-rotate-left"></i><span>リスト履歴</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-solid fa-arrow-right-from-bracket"></i><span>ログアウト</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="main-wrapper container">
+      <div class="material" id="material">
+        <h1>材料確認</h1>
+      </div>
+      <section class="feature" id="feature">
+        <div class="Item1" id="Item1">
+          <h2>料理名</h2>
+          <ul id="recipe-name">
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          </ul>
+          <!--ここに選択した材料を挿入-->
+        </div>
+        <div class="Item2" id="Item2">
+          <h2>材料一覧</h2>
+          <ul id="material-name">
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          </ul>
+          <!--ここにチェックボックス付きのリストを挿入-->
+        </div>
+        <div class="Item3" id="Item3">
+          <h2>メモ</h2>
+          <textarea id="textarea" rows="8" cols="33"></textarea>
+        </div>
+        <div class="Item4" id="Item4">
+          <h2>削除した材料</h2>
+          <ul id="delete-material">
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          <li>ビビンバ</li>
+          </ul>
+          <!--ここにチェックボックス付きのリストから選択された行を挿入-->
+        </div>
+      </section>
+      <div class="button">
+        <input id="back-button" type="button" onclick="location.href='#'" value="戻る">
+        <input id="confirm-button" type="button" onclick="location.href='#'" value="確定">
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-wrapper container">
+      <img class="team-logo" src="images/test2.png" alt="" />
+      <p class="team-name">&copy;egg corders</p>
+    </div>
+  </footer>
+</body>
+</html>

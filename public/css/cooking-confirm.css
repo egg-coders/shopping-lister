@@ -1,0 +1,23 @@
+
+.material h1{
+  text-decoration: underline;
+  text-underline-position: below;
+}
+
+
+.feature{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #fff;
+  .Item1{
+    width: calc(100%/2);
+  }
+  .Item2{
+    width: calc(100%/2);
+  }
+}
+
+.button{
+  text-align: right;
+}

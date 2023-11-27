@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レシピ登録画面</title>
+  <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/common.css" >
+  <link rel="stylesheet" href="css/reset.css" >
+  <link rel="stylesheet" href="css/recipe-save.css">
+  <script src="/js/recipe-save.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-wrapper container">
+      <h1><a href="#">Service Name</a></h1>
+      <nav>
+        <ul class="header-nav">
+          <li>
+            <a href="#"><i class="fa fa-solid fa-utensils"></i><span>レシピ登録</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-solid fa-clock-rotate-left"></i><span>リスト履歴</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-solid fa-arrow-right-from-bracket"></i><span>ログアウト</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h2 class="title-name">料理名</h2>
+    <div class="main-wrapper container">
+      <div class="cooking-contents">
+        <a class="cooking-content" href="#">
+          <img class="cooking-img" src="#" alt="料理名" />
+          <p class="cooking-name">
+            <textarea rows="1" id="text-name" class="text-name" >料理名を入力</textarea>
+          </p>
+        </a>
+      </div>
+      <section class="recipe-material">
+        <table class="recipe-table" id="recipe-table" >
+          <tr><th>個数</th><th>材料名</th>
+          <!-- 1列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>
+          <!-- 2列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>
+          <!-- 3列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>
+          <!-- 4列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>
+          <!-- 5列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>          
+          <!-- 6列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>          
+          <!-- 7列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>          
+          <!-- 8列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>          
+          <!-- 9列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>          
+          <!-- 10列目 -->
+          <tr>
+          <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+          <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+          </tr>
+          <!-- 11列目 -->
+          <tr>
+            <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+            <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+            </tr>
+          <!-- 12列目 -->
+          <tr>
+            <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+            <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+            </tr>
+          <!-- 13列目 -->
+          <tr>
+            <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+            <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+            </tr>
+          <!-- 14列目 -->
+          <tr>
+            <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+            <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+            </tr>
+          <!-- 15列目 -->
+          <tr>
+            <td><input type="text" size="5" maxlength="10" name="memberId" value="" class="memberList"></td>
+            <td><input type="text" size="30" maxlength="30" name="name" value="" class="memberList"></td>
+            </tr>
+          </tr>
+          </table>
+      </section>
+
+      <div class="button">
+        <input id="confirm-button" type="button" onclick="location.href='#'" value="確認画面へ">
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-wrapper container">
+      <img class="team-logo" src="images/test2.png" alt="" />
+      <p class="team-name">&copy;egg corders</p>
+    </div>
+  </footer>
+</body>
+</html>
