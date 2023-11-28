@@ -16,6 +16,12 @@
   .Item2{
     width: calc(100%/2);
   }
+  .Item3{
+    width: calc(100%/2);
+  }
+  .Item4{
+  width: calc(100%/2);
+}
 }
 
 .button{
