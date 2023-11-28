@@ -25,6 +25,30 @@ server.mount('/history', WEBrick::HTTPServlet::FileHandler, File.join(document_r
 server.mount('/recipeConfirm', WEBrick::HTTPServlet::FileHandler, File.join(document_root, "recipe-save-confim.html"))
 server.mount('/recipe', WEBrick::HTTPServlet::FileHandler, File.join(document_root, "recipe-save.html"))
 
+server.mount_proc '/user-register' do |req, res|
+  resBody = JSON.parse(req.body)
+
+  # ここにsqlへの問い合わせ
+  # check処理を書く
+  v = resBody['password'] == '9999'
+
+  data = {validator: v}
+  res.body = data.to_json
+  res['Content-Type'] = 'application/json'
+end
+
+server.mount_proc '/user-login' do |req, res|
+  resBody = JSON.parse(req.body)
+
+  # ここにsqlへの問い合わせを書く
+  # check処理を書く
+  v = resBody['password'] == '9999'
+
+  data = {validator: v}
+  res.body = data.to_json
+  res['Content-Type'] = 'application/json'
+end
+
 trap('INT'){server.shutdown}
 
 server.start
