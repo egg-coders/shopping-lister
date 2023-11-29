@@ -1,6 +1,11 @@
 require 'mysql2'
 
-client = Mysql2::Client.new(host: "localhost", username: "misaki", password: "r&B7%WZht5Usy6")
+puts "MySQLのユーザー名を入力してください"
+Username = gets.chomp
+puts "MySQLのパスワードを入力してください"
+Password = gets.chomp
+
+client = Mysql2::Client.new(host: "localhost", username: Username, password: Password)
 
 
 

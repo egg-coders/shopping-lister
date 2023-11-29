@@ -8,7 +8,7 @@
 ### 2，下記コマンドを自分のMySQLのuser名で実行してください
 
 ```bash
-mysql < sql_test.sql --user=misaki --password
+mysql < sql_test.sql --user=example_user_name --password
 ```
 passwordが求められるので選択したuserのpasswordpasswordを入力
 
@@ -28,6 +28,7 @@ trainingデータベースに下記のprefecturesテーブルが作成されま�
 ```bash
 ruby sql_test.rb
 ```
+すると先ほど入力したユーザ名とパスワードを求められるので入力してください
 
 これでターミナルにDBから情報を出力できました
 
