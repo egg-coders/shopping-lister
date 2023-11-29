@@ -1,4 +1,4 @@
-function handleRespons(response){
+function handleResponse(response){
   if(!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`)
   }
@@ -15,8 +15,9 @@ window.onload = function cook(){
 window.onload = function matelial(){
   const material = document.getElementById("material-name");
   material.insertAdjacentHTML
-  ("afterbegin","<div><input type ='checkbox' id=material-check >材料<input type = 'text' id = amount size ='1'><span>個</span></div>");
-  material-check.addEventListener('change', function(){
+  ("afterbegin","<div><input type ='checkbox' id='material-check' >材料<input type = 'text' id = 'amount' size ='1'><span>個</span></div>");
+  const materialCheck = document.getElementById("material-check")
+  materialCheck.addEventListener('change', function(){
     const deleteMaterial = document.getElementById("delete-material");
     deleteMaterial.insertAdjacentHTML
     ("afterbegin","<li>チェックされた材料</li>");
