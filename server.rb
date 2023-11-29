@@ -49,6 +49,18 @@ server.mount_proc '/user-login' do |req, res|
   res['Content-Type'] = 'application/json'
 end
 
+server.mount_proc '/get-recipes' do |req, res|
+  data = [
+    {"id" => "1", "name" => "寿司", "img_url" => "./images/nigirizushi_moriawase.png"},
+    {"id" => "2", "name" => "ハンバーグ", "img_url" => "./images/hanbagu.jpg"},
+    {"id" => "3", "name" => "親子丼", "img_url" => "./images/oyakodon.jpg"},
+    {"id" => "4", "name" => "ペペロンチーノ", "img_url" => "./images/Peperoncino.png"},
+  ]
+
+  res.body = data.to_json
+  res['Content-Type'] = 'application/json'
+end
+
 trap('INT'){server.shutdown}
 
 server.start
