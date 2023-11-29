@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/cooking-select.css" />
     <link rel="stylesheet" href="css/reset.css" />
+    <script src="js/cooking-select.js"></script>
   </head>
 
   <body>
@@ -34,83 +35,11 @@
       <div class="main-wrapper container">
         <div class="main-left">
           <h1 class="cooking-contents-title">料理一覧</h1>
-          <div class="cooking-contents">
-            <a class="cooking-content" href="#">
+          <div id="cooking-contents">
+            <!-- <div class="cooking-content" href="#">
               <img class="cooking-img" src="#" alt="料理名" />
               <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-          </div>
-          <div class="cooking-contents">
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-          </div>
-          <div class="cooking-contents">
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
-            <a class="cooking-content" href="#">
-              <img class="cooking-img" src="#" alt="料理名" />
-              <p class="cooking-name">料理名</p>
-            </a>
+            </div> -->
           </div>
         </div>
 
@@ -122,11 +51,10 @@
               <button type="submit">検索</button>
             </form>
           </div>
-          <div class="selected-wrapper">
+          <div id="selected-wrapper">
             <p>選択した料理</p>
-            <ul class="cooking-list">
-              <li class="cooking-item"><span>料理名</span><button class="delete-button">☓</button></li>
-              <li class="cooking-item"><span>料理名</span><button class="delete-button">☓</button></li>
+            <ul id="selected-list">
+              <!-- <li class="selected-item"><span>料理名A</span><button class="delete-button">☓</button></li> -->
             </ul>
           </div>
         </div>
