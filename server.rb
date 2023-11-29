@@ -2,8 +2,10 @@ require 'json'
 require 'rubygems'
 require 'bundler/setup'
 require 'webrick'
+require 'mysql2'
+require_relative './sql_control.rb'
 
-
+client = SQLControl.new
 document_root = File.expand_path("./public/")
 
 
@@ -55,6 +57,24 @@ server.mount_proc '/get-recipes' do |req, res|
     {"id" => "2", "name" => "ハンバーグ", "img_url" => "./images/hanbagu.jpg"},
     {"id" => "3", "name" => "親子丼", "img_url" => "./images/oyakodon.jpg"},
     {"id" => "4", "name" => "ペペロンチーノ", "img_url" => "./images/Peperoncino.png"},
+  ]
+
+  resBody = JSON.parse(req.body);
+
+  # search_data = client.get_search_result
+
+  # res.body = search_data
+
+  res.body = data.to_json
+  res['Content-Type'] = 'application/json'
+end
+
+server.mount_proc '/get-ingredient' do |req, res|
+  data = [
+    {"ingredient_id" => "1", "ingredient_name" => '酢飯', "amount" => '1'},
+    {'ingredient_id' => '2', 'ingredient_name' => '鮮魚', 'amount' => '200'},
+    {'ingredient_id' => '3', 'ingredient_name' => '海苔', 'amount' => '4'},
+    {'ingredient_id' => '4', 'ingredient_name' => 'わさび', 'amount' => '1'},
   ]
 
   res.body = data.to_json
