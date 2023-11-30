@@ -9,13 +9,15 @@ class SQLControl
     @client = Mysql2::Client.new(host: "localhost", username: "", password: "", database: "shopping_list")
   end
 
-  def get_search_result(word="", id="")
+  def get_search_result(word=[], id="")
+    key = word.map {|w| "(.*" + w + ".*)"}.join("|")
+    key = "(.*.*)" if key == "" || nil
     select_statement = %{
       SELECT r.id AS recipe_id, r.name AS name, r.img_url AS img_url
       FROM
         users AS u
         INNER JOIN recipes AS r ON u.id = r.user_id
-        WHERE r.name LIKE "%#{word}%"
+        WHERE r.name REGEXP ('#{key}')
       LIMIT 10;
     }
     result = @client.query(select_statement)
