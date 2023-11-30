@@ -81,6 +81,23 @@ server.mount_proc '/get-ingredient' do |req, res|
   res['Content-Type'] = 'application/json'
 end
 
+server.mount_proc '/get-list' do |req, res|
+  data = client.get_list_result
+
+  res.body = data
+  res['Content-Type'] = 'application/json'
+end
+
+server.mount_proc 'get-list-test' do |req, res|
+  data = [
+    {"list_id"=>1, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
+    {"list_id"=>2, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
+    {"list_id"=>3, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
+    {"list_id"=>4, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
+    {"list_id"=>5, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
+  ]
+end
+
 trap('INT'){server.shutdown}
 
 server.start
