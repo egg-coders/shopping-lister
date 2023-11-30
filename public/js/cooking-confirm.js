@@ -4,47 +4,29 @@ function handleResponse(response){
   }
   return response.json;
 }
-//ページ３からsessioStorageで貰ったデータを受け取る
- const idListStr = sessionStorage.getItem("selectedIdList");
- window.onload = function(){
-  fetch("/get-ingredient", {
-    method: "POST",
-    body: idListStr,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  .then((response) => handleResponse(response))
-  .then((data) => {
-    Object.values(data["recipes"]).forEach(ele => {
-      const recipe = document.getElementById("recipe-name");
-      recipe.insertAdjacentHTML("afterbegin",`<li>${ele}</li>`);
-    });
-    Object.values(data["ingredients"]).forEach(ele =>{
-      const material = document.getElementById("material-name");
-      material.insertAdjacentHTML
-      ("afterbegin",
-      `<div id = ${ele.ingredent_id}>
-        <input type ='checkbox' id='material-check' >
-        <span id = material>${ele.ingredient_name}</span>
-        <input type = 'text' id = 'amount' size ='1'>${ele.amount}
-        <span id= 'unit' >${ele.unit}</span>
-      </div>`);
-    });
-    const materialCheck = document.getElementById("material-check")
-    materialCheck.addEventListener('change', function(){
-      const deleteMaterial = document.getElementById("delete-material");
-      deleteMaterial.insertAdjacentHTML
-      ("afterbegin",materialCheck.parentElement.innerHTML);
-      const listElement = document.getElementById('mate');
-      listElement.remove();
-    });
-  })
-  .catch((error) => console.error("Fetch error:", error));
+//ページ３から
+const idListStr = sessionStorage.getItem("selectedIdList");
+const idList = JSON.parse(idListStr);
+
+//料理名にリストで挿入する
+window.onload = function cook(){
+  const recipe = document.getElementById("recipe-name");
+  recipe.insertAdjacentHTML("afterbegin","<li>料理名</li>");
 }
 
-//resipe id と材料idとメモを材料の個数をフェッチでおくる
+//材料一覧にチェックボックス付きでデータを挿入。チェックボックスが選択されたら削除した材料に挿入
+window.onload = function matelial(){
+  const material = document.getElementById("material-name");
+  material.insertAdjacentHTML
+  ("afterbegin","<div id = 'mate'><input type ='checkbox' id='material-check' >材料<input type = 'text' id = 'amount' size ='1'><span id= 'unit' >個</span></div>");
+  const materialCheck = document.getElementById("material-check")
+  materialCheck.addEventListener('change', function(){
+    const deleteMaterial = document.getElementById("delete-material");
+    deleteMaterial.insertAdjacentHTML
+    ("afterbegin","<div id = 'mate'><input type ='checkbox' id='material-check' >材料<input type = 'text' id = 'amount' size ='1'><span id= 'unit' >個</span></div>");
+    const listElement = document.getElementById('mate');
+    listElement.remove();
+  });
+}
 
-const cookingName = document.createElement("p");
-cookingName.textContent = recipe.name;
-cookingContent.appendChild(cookingName);
+
