@@ -52,10 +52,7 @@ server.mount_proc '/user-login' do |req, res|
 end
 
 server.mount_proc '/get-recipes' do |req, res|
-  resBody = req.body != nil ? JSON.parse(req.body) : {}
-  search_key = resBody["searchWord"]
-  search_key = [] if search_key == nil
-  data = client.get_search_result(search_key)
+  data = client.get_search_result
 
   res.body = data
   res['Content-Type'] = 'application/json'
@@ -68,12 +65,6 @@ server.mount_proc '/get-recipes-test' do |req, res|
     {"id" => "3", "name" => "親子丼", "img_url" => "./images/oyakodon.jpg"},
     {"id" => "4", "name" => "ペペロンチーノ", "img_url" => "./images/Peperoncino.png"},
   ]
-
-  resBody = JSON.parse(req.body);
-
-  # search_data = client.get_search_result
-
-  # res.body = search_data
 
   res.body = data.to_json
   res['Content-Type'] = 'application/json'
