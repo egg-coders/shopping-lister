@@ -22,7 +22,7 @@ function postFormData(url) {
       "Content-Type": "application/json",
     },
   })
-    .then(handleResponse)
+    .then((response) => handleResponse(response))
     .catch((error) => console.error("Fetch error:", error));
 }
 
@@ -37,6 +37,6 @@ let loginBtn = document.getElementById("login-btn");
 loginBtn.addEventListener("click", () => {
   postFormData("/user-login").then((data) => {
     console.log(data);
-    // window.location.href = "cooking-select.html";
+    window.location.href = "cooking-select.html";
   });
 });

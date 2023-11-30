@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping lists</title>
-</head>
-<body>
-    <h1>List history</h1>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>ShoppingListService</title>
+    <meta name="description" content="買い忘れを防止するサービス" />
+    <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/list-history.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <script src="js/cooking-select.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-wrapper container">
+        <h1><a class="link-history">Service Name</a></h1>
+        <nav>
+          <ul class="header-nav">
+            <li>
+              <a class="link-history"><i class="fa fa-solid fa-utensils"></i><span>レシピ登録</span></a>
+            </li>
+            <li>
+              <a class="link-history"><i class="fa fa-solid fa-clock-rotate-left"></i><span>リスト履歴</span></a>
+            </li>
+            <li>
+              <a class="link-history"><i class="fa fa-solid fa-arrow-right-from-bracket"></i><span>ログアウト</span></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="main-wrapper container">
+        <h1 class="title">履歴</h1>
+        <div id="table-container">
+          <table>
+            <tr class="table-head">
+              <th class="create-date">作成日</th>
+              <th class="cooking-name">料理名</th>
+            </tr>
+            <tr class="table-item">
+              <td class="create-date"><a class="link-history">2023/11/3</a></td>
+              <td class="cooking-name"><a class="link-history">オムライス、パスタ</a></td>
+            </tr>
+            <tr class="table-item">
+              <td class="create-date"><a class="link-history">2023/11/1</a></td>
+              <td class="cooking-name"><a class="link-history">カツ丼</a></td>
+            </tr>
+            <tr class="table-item">
+              <td class="create-date"><a class="link-history">2023/10/29</a></td>
+              <td class="cooking-name"><a class="link-history">ペペロンチーノ</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-wrapper container">
+        <p class="team-name">&copy;egg corders</p>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,20 +1,50 @@
-//料理名を追加する関数
-window.onload = function (){
-  const recipeName = document.getElementById('recipe-name');
-  let text = '<li>追加テキスト</li>';
-  recipeName.insertAdjacentHTML('afterbegin',text);
-}
-
-//材料をチェックボックス付きのテキストで追加する関数
-window.onload = function(){
-  const materialName = document.getElementById('material-name');
-  let text = '<div><input type="checkbox" id="check" name="check" >追加テキスト<div>';
-  materialName.insertAdjacentHTML('afterbegin',text);
-}
-
-function mycheck() {
-  let flag = false;//チェックされているかを判定する変数
-  (let i = 0; i < document.form.check.lenth; i++){
-    
+function handleResponse(response){
+  if(!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
   }
+  return response.json;
 }
+//ページ３からsessioStorageで貰ったデータを受け取る
+ const idListStr = sessionStorage.getItem("selectedIdList");
+ window.onload = function(){
+  fetch("/get-ingredient", {
+    method: "POST",
+    body: idListStr,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) => handleResponse(response))
+  .then((data) => {
+    Object.values(data["recipes"]).forEach(ele => {
+      const recipe = document.getElementById("recipe-name");
+      recipe.insertAdjacentHTML("afterbegin",`<li>${ele}</li>`);
+    });
+    Object.values(data["ingredients"]).forEach(ele =>{
+      const material = document.getElementById("material-name");
+      material.insertAdjacentHTML
+      ("afterbegin",
+      `<div id = ${ele.ingredent_id}>
+        <input type ='checkbox' id='material-check' >
+        <span id = material>${ele.ingredient_name}</span>
+        <input type = 'text' id = 'amount' size ='1'>${ele.amount}
+        <span id= 'unit' >${ele.unit}</span>
+      </div>`);
+    });
+    const materialCheck = document.getElementById("material-check")
+    materialCheck.addEventListener('change', function(){
+      const deleteMaterial = document.getElementById("delete-material");
+      deleteMaterial.insertAdjacentHTML
+      ("afterbegin",materialCheck.parentElement.innerHTML);
+      const listElement = document.getElementById('mate');
+      listElement.remove();
+    });
+  })
+  .catch((error) => console.error("Fetch error:", error));
+}
+
+//resipe id と材料idとメモを材料の個数をフェッチでおくる
+
+const cookingName = document.createElement("p");
+cookingName.textContent = recipe.name;
+cookingContent.appendChild(cookingName);

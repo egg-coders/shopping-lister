@@ -12,12 +12,10 @@
   border-bottom: 2px solid gray;
 }
 
-.cooking-contents {
+#cooking-contents {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
 }
 
 .cooking-content {
@@ -25,6 +23,7 @@
   width: 31%;
   background-color: white;
   padding: 10px;
+  margin-right: 2%;
   margin-bottom: 30px;
   border: 1px solid gray;
   border-radius: 3px;
@@ -59,16 +58,21 @@ form {
   flex-direction: column;
 }
 
-.selected-wrapper {
-  padding-bottom: 10px;
+#selected-wrapper {
+  padding-bottom: 40px;
   background-color: white;
+  min-height: 300px;
+  margin-bottom: 50px;
+
+  position: relative;
 }
 
-.cooking-list {
+#selected-list {
+  display: block;
   padding: 0;
 }
 
-.cooking-item {
+.selected-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,4 +93,11 @@ form {
 
 .delete-button:hover {
   background-color: #cc0000;
+}
+
+#decide-button {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
