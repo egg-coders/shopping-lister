@@ -88,14 +88,17 @@ server.mount_proc '/get-list' do |req, res|
   res['Content-Type'] = 'application/json'
 end
 
-server.mount_proc 'get-list-test' do |req, res|
+server.mount_proc '/get-list-test' do |req, res|
   data = [
-    {"list_id"=>1, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
-    {"list_id"=>2, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
-    {"list_id"=>3, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
-    {"list_id"=>4, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
-    {"list_id"=>5, "recipe_names"=>["寿司", "ピザ"], "date"=>2023-11-29 20:54:17 +0900}
+    {"list_id"=>1, "recipe_names"=>["寿司", "ピザ"], "date"=>Time.local(2023, 12, 1)},
+    {"list_id"=>2, "recipe_names"=>["寿司", "ピザ", "ラーメン"], "date"=>Time.local(2023, 12, 1)},
+    {"list_id"=>3, "recipe_names"=>["寿司", "ピザ", "親子丼", "味噌汁", "カルボナーラ"], "date"=>Time.local(2023, 12, 1)},
+    {"list_id"=>4, "recipe_names"=>["中華スープ", "麻婆豆腐"], "date"=>Time.local(2023, 12, 1)},
+    {"list_id"=>5, "recipe_names"=>["ボンゴレロッソ"], "date"=>Time.local(2023, 12, 1)},
   ]
+
+  res.body = data.to_json
+  res['Content-Type'] = 'application/json'
 end
 
 trap('INT'){server.shutdown}
