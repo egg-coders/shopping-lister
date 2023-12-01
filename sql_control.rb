@@ -27,7 +27,7 @@ class SQLControl
 
   def get_recipe_ingredient(recipes)
     select_statement %{
-      SELECT i.id AS ingredient_id, i.name AS ingredient_name, SUM(ia.amount) AS ingredient_amount
+      SELECT i.id AS ingredient_id, i.name AS ingredient_name, SUM(i.amount) AS ingredient_amount
       FROM
         recipes AS r
         INNER JOIN ingredients_amount AS ia ON r.id = ia.recipe_id
@@ -41,7 +41,7 @@ class SQLControl
     result.to_a.to_json
   end
 
-  def get_list_result(uid="")
+  def get_list_history(uid="")
     select_statement = %{
       SELECT l.id AS list_id, r.name AS recipe_name, l.created_at AS date
         FROM
@@ -54,6 +54,10 @@ class SQLControl
     }
 
     sql_result = @client.query(select_statement).to_a
+    sql_result = sql_result.map do |ele|
+      ele["date"] = ele["date"].to_date
+      ele
+    end
     result = create_list_history(sql_result).to_json
 
     result
@@ -65,6 +69,47 @@ class SQLControl
     result = @client.query(select_statement)
 
     result.to_a.to_json
+  end
+
+  # 画面4へ材料を送るときのsql
+  def get_recipe_name(ids)
+    arr = ids.join(", ")
+    arr = "0" if arr == ""
+    select_statement = %{
+      SELECT id, name
+        FROM
+          recipes
+          WHERE id IN (#{arr})
+    }
+
+    sql_result = @client.query(select_statement).to_a
+    result = create_id_name_hash(sql_result)
+    result.to_json
+  end
+
+  def create_id_name_hash(array)
+    result = array.reduce({}) do |r, ele|
+      r[ele["id"]] = ele["name"]
+      r
+    end
+    result
+  end
+
+  def get_ingredient(ids)
+    arr = ids.join(", ")
+    arr = "0" if arr == ""
+    select_statement = %{
+      SELECT i.id AS ingredient_id, i.name AS ingredient_name, i.unit AS unit, SUM(a.amount) AS amount
+        FROM
+          recipes AS r
+          INNER JOIN ingredients_amount AS a ON r.id = a.recipe_id
+          INNER JOIN ingredients AS i ON i.id = a.ingredient_id
+          WHERE r.id IN (#{arr})
+          GROUP BY i.id, i.name, i.unit
+    }
+
+    result = @client.query(select_statement).to_a.to_json
+    result
   end
 
   def create_list_history(arr)
