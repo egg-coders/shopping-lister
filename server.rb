@@ -51,6 +51,7 @@ server.mount_proc '/user-login' do |req, res|
   res['Content-Type'] = 'application/json'
 end
 
+# 画面3
 server.mount_proc '/get-recipes' do |req, res|
   data = client.get_search_result
 
@@ -70,7 +71,21 @@ server.mount_proc '/get-recipes-test' do |req, res|
   res['Content-Type'] = 'application/json'
 end
 
+# 画面4
 server.mount_proc '/get-ingredient' do |req, res|
+  req_data = req.body == nil ? [] : JSON.parse(req.body)
+
+  # req_data = [1, 2]
+
+  recipe_names = client.get_recipe_name(req_data)
+  ingredients = client.get_ingredient(req_data)
+  data = {"recipes" => recipe_names, "ingredients" => ingredients}
+
+  res.body = data.to_json
+  res['Content-Type'] = 'application/json'
+end
+
+server.mount_proc '/get-ingredient-test' do |req, res|
   data = [
     {"ingredient_id" => "1", "ingredient_name" => '酢飯', "amount" => '1'},
     {'ingredient_id' => '2', 'ingredient_name' => '鮮魚', 'amount' => '200'},
@@ -82,8 +97,9 @@ server.mount_proc '/get-ingredient' do |req, res|
   res['Content-Type'] = 'application/json'
 end
 
+# 画面8
 server.mount_proc '/get-list' do |req, res|
-  data = client.get_list_result
+  data = client.get_list_history
 
   res.body = data
   res['Content-Type'] = 'application/json'
@@ -91,11 +107,11 @@ end
 
 server.mount_proc '/get-list-test' do |req, res|
   data = [
-    {"list_id"=>1, "recipe_names"=>["寿司", "ピザ"], "date"=>Time.local(2023, 12, 1)},
-    {"list_id"=>2, "recipe_names"=>["寿司", "ピザ", "ラーメン"], "date"=>Time.local(2023, 12, 1)},
-    {"list_id"=>3, "recipe_names"=>["寿司", "ピザ", "親子丼", "味噌汁", "カルボナーラ"], "date"=>Time.local(2023, 12, 1)},
-    {"list_id"=>4, "recipe_names"=>["中華スープ", "麻婆豆腐"], "date"=>Time.local(2023, 12, 1)},
-    {"list_id"=>5, "recipe_names"=>["ボンゴレロッソ"], "date"=>Time.local(2023, 12, 1)},
+    {"list_id"=>1, "recipe_names"=>["寿司", "ピザ"], "date"=>Date.new(2023, 1, 20)},
+    {"list_id"=>2, "recipe_names"=>["寿司", "ピザ", "ラーメン"], "date"=>Date.new(2023, 10, 11)},
+    {"list_id"=>3, "recipe_names"=>["寿司", "ピザ", "親子丼", "味噌汁", "カルボナーラ"], "date"=>Date.new(2022, 9, 8)},
+    {"list_id"=>4, "recipe_names"=>["中華スープ", "麻婆豆腐"], "date"=>Date.new(2023, 5, 9)},
+    {"list_id"=>5, "recipe_names"=>["ボンゴレロッソ"], "date"=>Date.new(2023, 3, 30)},
   ]
 
   res.body = data.to_json
