@@ -6,7 +6,7 @@ require 'mysql2'
 class SQLControl
   def initialize
     # ここのusername と passwordをそれぞれ書き換えて運用する
-    @client = Mysql2::Client.new(host: "localhost", username: "K5", password: "G465j7R7^Nbgd$", database: "shopping_list")
+    @client = Mysql2::Client.new(host: "localhost", username: "", password: "", database: "shopping_list")
   end
 
   def get_search_result(word=[])
