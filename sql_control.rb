@@ -6,7 +6,7 @@ require 'mysql2'
 class SQLControl
   def initialize
     # ここのusername と passwordをそれぞれ書き換えて運用する
-    @client = Mysql2::Client.new(host: "localhost", username: "", password: "", database: "shopping_list")
+    @client = Mysql2::Client.new(host: "localhost", username: "K5", password: "G465j7R7^Nbgd$", database: "shopping_list")
   end
 
   def get_search_result(word=[])
@@ -139,15 +139,73 @@ class SQLControl
   end
 
   def get_list_memo(list_id)
-    select_statement = %{
+    select_statement = @client.prepare(%{
       SELECT memo
         FROM
           shopping_lists
-          WHERE id = #{list_id}
-    }
+          WHERE id = ?
+    })
+    sql_result = select_statement.execute(list_id).to_a[0]["memo"]
 
-    sql_result = @client.query(select_statement).to_a[0]["memo"]
     return sql_result
+  end
+
+  def insert_list(data)
+    begin
+      @client.query("start transaction;")
+      list_id = create_new_list(data["memo"])
+      set_list_recipes(list_id, data["recipe_ids"])
+      set_list_ingredients(list_id, data["ingredients"])
+      @client.query("commit;")
+    rescue Mysql2::Error => e
+      @client.query("rollback;")
+      puts "Error message: #{e.message}"
+      File.open('error.txt', 'a') do |f|
+        f.puts "#{e.message}"
+      end
+      list_id = 0
+    end
+    list_id
+  end
+
+  def create_new_list(memo)
+    stmt = @client.prepare("INSERT INTO shopping_lists(user_id, memo) VALUES (1, ?);")
+    res = stmt.execute(memo)
+
+    @client.last_id
+  end
+
+  def set_list_recipes(list_id, recipe_ids)
+    ids = recipe_ids[1, recipe_ids.length - 2].split(",")
+    stmt = @client.prepare(%{
+      INSERT INTO
+        list_recipes (shopping_list_id, recipe_id)
+      VALUES (#{list_id}, ?);
+    })
+
+    ids.each do |id|
+      res = stmt.execute(id)
+    end
+
+    true
+  end
+
+  def set_list_ingredients(list_id, ingredients)
+    stmt = @client.prepare(%{
+      INSERT INTO
+        list_ingredients (
+            shopping_list_id,
+            ingredient_id,
+            amount
+        )
+      VALUES (#{list_id}, ?, ?);
+    })
+
+    ingredients.each do |ele|
+      res = stmt.execute(ele["id"], ele["amount"])
+    end
+
+    true
   end
 
   def create_list_history(arr)
