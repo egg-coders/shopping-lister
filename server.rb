@@ -55,7 +55,7 @@ end
 server.mount_proc '/get-recipes' do |req, res|
   data = client.get_search_result
 
-  res.body = data
+  res.body = data.to_json
   res['Content-Type'] = 'application/json'
 end
 
@@ -74,6 +74,9 @@ end
 # 画面4
 server.mount_proc '/get-ingredient' do |req, res|
   req_data = req.body == nil ? [] : JSON.parse(req.body)
+  File.open('log.txt', 'a') do |f|
+    f.puts "#{req.request_method}\n#{req.path}\n#{req.body}"
+  end
 
   # req_data = [1, 2]
 
@@ -86,12 +89,15 @@ server.mount_proc '/get-ingredient' do |req, res|
 end
 
 server.mount_proc '/get-ingredient-test' do |req, res|
-  data = [
-    {"ingredient_id" => "1", "ingredient_name" => '酢飯', "amount" => '1'},
-    {'ingredient_id' => '2', 'ingredient_name' => '鮮魚', 'amount' => '200'},
-    {'ingredient_id' => '3', 'ingredient_name' => '海苔', 'amount' => '4'},
-    {'ingredient_id' => '4', 'ingredient_name' => 'わさび', 'amount' => '1'},
-  ]
+  data = {
+    "recipes" => { 1 => "牛丼", 2 => "すき焼き"},
+    "ingredients" => [
+      {"ingredient_id" => "1", "ingredient_name" => '酢飯', "unit" => "グラム", "amount" => '1'},
+      {'ingredient_id' => '2', 'ingredient_name' => '鮮魚', "unit" => "グラム", 'amount' => '200'},
+      {'ingredient_id' => '3', 'ingredient_name' => '海苔', "unit" => "グラム", 'amount' => '4'},
+      {'ingredient_id' => '4', 'ingredient_name' => 'わさび', "unit" => "グラム", 'amount' => '1'},
+    ]
+  }
 
   res.body = data.to_json
   res['Content-Type'] = 'application/json'
@@ -101,7 +107,7 @@ end
 server.mount_proc '/get-list' do |req, res|
   data = client.get_list_history
 
-  res.body = data
+  res.body = data.to_json
   res['Content-Type'] = 'application/json'
 end
 
@@ -114,6 +120,22 @@ server.mount_proc '/get-list-test' do |req, res|
     {"list_id"=>5, "recipe_names"=>["ボンゴレロッソ"], "date"=>Date.new(2023, 3, 30)},
   ]
 
+  res.body = data.to_json
+  res['Content-Type'] = 'application/json'
+end
+
+server.mount_proc '/get-shopping-list' do |req, res|
+  req_data = req.body == nil ? 0 : JSON.parse(req.body)
+  req_data = 1
+
+  recipes = client.get_shopping_list_recipes(req_data)
+  ingredients = client.get_shopping_list_ingredient(req_data)
+  memo = client.get_list_memo(req_data)
+  data = {
+    "recipes" => recipes,
+    "ingredients" => ingredients,
+    "memo" => memo,
+  }
   res.body = data.to_json
   res['Content-Type'] = 'application/json'
 end

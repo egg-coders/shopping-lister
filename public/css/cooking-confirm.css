@@ -1,7 +1,25 @@
 
 .material h1{
+  margin-bottom: 10px;
+  font-size: 40px
+}
+
+
+#zairyou{
+  font-size: 35px;
   text-decoration: underline;
-  text-underline-position: below;
+  background-image: url(/images/tamago18-1280x720.png);
+}
+
+.main-wrapper {
+  display: flex;
+}
+
+.header-wrapper h1{
+  font-family: "Nikukyu";
+  color: rgb(141, 141, 3);
+  font-size: 50px;
+  margin-bottom: 10px;
 }
 
 
@@ -9,7 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  background-color: #fff;
+  background-color: rgb(255, 255, 201);
   .Item1{
     width: calc(100%/2);
   }
@@ -25,5 +43,6 @@
 }
 
 .button{
-  text-align: right;
+  text-align: center;
+  background-image: url(/images/tamago18-1280x720.png);
 }

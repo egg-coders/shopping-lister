@@ -56,7 +56,7 @@ function renderIngredients(data) {
     const inputAmount = document.createElement("input");
     inputAmount.type = "text";
     inputAmount.id = "amount";
-    inputAmount.size = "1";
+    inputAmount.size = "5";
     inputAmount.value = ingredientData.amount;
     div.appendChild(inputAmount);
 

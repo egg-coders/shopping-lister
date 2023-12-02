@@ -3,12 +3,22 @@
   text-underline-position: below;
 }
 
+.header-wrapper h1{
+  font-family: "Nikukyu";
+  color: rgb(141, 141, 3);
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.material {
+  background-image: url(/images/tamago18-1280x720.png);
+}
 
 .feature{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  background-color: aquamarine;
+  background-color: rgb(255, 255, 201);
   .Item1{
     width: calc(100%/2);
   }
@@ -21,5 +31,6 @@
 }
 
 .button{
-  text-align: right;
+  background-image: url(/images/tamago18-1280x720.png);
+  text-align: center;
 }
