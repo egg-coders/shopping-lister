@@ -6,7 +6,7 @@ function handleResponse(response) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("get-list")
+  fetch("/get-list")
     .then((response) => handleResponse(response))
     .then((data) => {
       data.forEach((list_data) => {

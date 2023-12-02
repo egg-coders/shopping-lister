@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderIngredients(data);
 
       const confirmButton = document.getElementById("confirm-button");
-      confirmButton.addEventListener("click", handleConfirmClick);
+      confirmButton.addEventListener("click", handleConfirmClick());
     })
     .catch((error) => console.error("Fetch error:", error));
 });

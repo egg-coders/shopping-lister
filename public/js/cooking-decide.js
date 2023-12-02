@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
       renderIngredients(data);
       document.getElementById("textarea").value = data["memo"];
 
-      const confirmButton = document.getElementById("confirm-button");
-      confirmButton.addEventListener("click", handleConfirmClick);
+      // const confirmButton = document.getElementById("confirm-button");
+      // confirmButton.addEventListener("click", handleConfirmClick());
     })
     .catch((error) => console.error("Fetch error:", error));
 });
