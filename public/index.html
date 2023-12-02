@@ -4,28 +4,38 @@
     <meta charset="utf-8" />
     <title>れしぴよ！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/earlyaccess/nikukyu.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/nikukyu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/login.css" />
     <link rel="stylesheet" href="css/reset.css" />
   </head>
 
   <body>
-    <main id="color">
+    <main>
       <div class="login-wrapper">
-        <h1 class="service-name">れしぴよ！</h1>
-        <form id="login-form" action="#" method="post">
-          <input type="email" name="email" required="required" placeholder="メールアドレス" />
-          <input type="password" name="password" required="required" placeholder="パスワード" />
-          <div class="button-wrapper">
-            <button id="register-btn" class="button" type="button"><b>登録</b></button>
-            <button id="login-btn" lass="button" type="button"><b>ログイン</b></button>
+        <div class="login-inner">
+          <h1 class="service-name">れしぴよ！</h1>
+          <div class="form-container">
+            <form id="login-form" action="#" method="post">
+              <label for="email">メールアドレス</label>
+              <input class="input-box" type="email" name="email" required="required" />
+              <label for="password">パスワード</label>
+              <input class="input-box" type="password" name="password" required="required" />
+              <div class="button-wrapper">
+                <button id="login-btn" class="button" type="button"><b>ログイン</b></button>
+                <button id="register-btn" class="button" type="button"><b>アカウント登録はこちら</b></button>
+              </div>
+            </form>
           </div>
-        </form>
-        <h2 class="team-name">egg corders</h2>
-        <img src="/images/586896.png" id="piyo"> 
+        </div>
+        <img src="/images/586896.png" id="piyo" />
       </div>
     </main>
+    <footer>
+      <div class="footer-wrapper container">
+        <p class="team-name">&copy;egg corders</p>
+      </div>
+    </footer>
     <script src="js/login.js"></script>
   </body>
 </html>
-

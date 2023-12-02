@@ -92,7 +92,7 @@ function handleConfirmClick() {
       "Content-Type": "application/json",
     },
   })
-    .then(handleResponse)
+    .then((response) => handleResponse(response))
     .then((data) => {
       sessionStorage.setItem("listId", JSON.stringify(data));
       window.location.href = "/decide";
@@ -102,14 +102,15 @@ function handleConfirmClick() {
 
 // HTML取得後の処理
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/get-ingredient", {
+  console.log(`request_data：${sessionStorage.getItem("selectedIdList")}`);
+  fetch("/get-ingredient-test", {
     method: "POST",
     body: sessionStorage.getItem("selectedIdList"),
     headers: {
       "Content-Type": "application/json",
     },
   })
-    .then(handleResponse)
+    .then((response) => handleResponse(response))
     .then((data) => {
       renderRecipes(data);
       renderIngredients(data);

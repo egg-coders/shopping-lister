@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cookingContent.href = "#";
 
         const cookingImg = document.createElement("img");
-        cookingImg.classList.add("cooking-item");
+        cookingImg.classList.add("cooking-img");
         cookingImg.src = recipe.img_url;
         cookingImg.alt = recipe.name;
         cookingContent.appendChild(cookingImg);
@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 料理選択時の処理
       document.querySelectorAll(".cooking-content").forEach((cookingContent) => {
-        cookingContent.addEventListener("click", () => {
+        cookingContent.addEventListener("click", (event) => {
+          event.preventDefault();
           const newSelectedItem = document.createElement("li");
           newSelectedItem.classList.add("selected-item");
 
