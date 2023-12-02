@@ -103,7 +103,7 @@ function handleConfirmClick() {
 // HTML取得後の処理
 document.addEventListener("DOMContentLoaded", () => {
   console.log(`request_data：${sessionStorage.getItem("selectedIdList")}`);
-  fetch("/get-ingredient-test", {
+  fetch("/get-ingredient", {
     method: "POST",
     body: sessionStorage.getItem("selectedIdList"),
     headers: {
