@@ -6,7 +6,7 @@ function handleResponse(response) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("get-list-test")
+  fetch("get-list")
     .then((response) => handleResponse(response))
     .then((data) => {
       data.forEach((list_data) => {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const table = document.querySelector("table");
         table.appendChild(tableItem);
-      })
+      });
 
       //履歴をクリックした時の処理
       const linkHistories = document.querySelectorAll(".link-history");
