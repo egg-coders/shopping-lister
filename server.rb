@@ -74,11 +74,6 @@ end
 # 画面4
 server.mount_proc '/get-ingredient' do |req, res|
   req_data = req.body == nil ? [] : JSON.parse(req.body)
-  File.open('log.txt', 'a') do |f|
-    f.puts "#{req.request_method}\n#{req.path}\n#{req.body}"
-  end
-
-  # req_data = [1, 2]
 
   recipe_names = client.get_recipe_name(req_data)
   ingredients = client.get_ingredient(req_data)
@@ -124,9 +119,16 @@ server.mount_proc '/get-list-test' do |req, res|
   res['Content-Type'] = 'application/json'
 end
 
+server.mount_proc '/post-selected-ingredients' do |req, res|
+  req_data = JSON.parse(req.body)
+  list_id = client.insert_list(req_data)
+
+  res.body = list_id.to_json
+  res['Content-Type'] = 'application/json'
+end
+
 server.mount_proc '/get-shopping-list' do |req, res|
   req_data = req.body == nil ? 0 : JSON.parse(req.body)
-  req_data = 1
 
   recipes = client.get_shopping_list_recipes(req_data)
   ingredients = client.get_shopping_list_ingredient(req_data)
