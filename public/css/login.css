@@ -1,42 +1,99 @@
-@import url(https://fonts.googleapis.com/earlyaccess/nikukyu.css);
-main {
+/* @import url(https://fonts.googleapis.com/earlyaccess/nikukyu.css); */
+
+body {
   display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
-
-.login-wrapper {
-  width: 100%;
-  padding: 70px 30px 50px 30px;
-  text-align: center;
+main {
+  flex-grow: 1;
   background-color: rgb(247, 247, 160);
 }
 
-.team-name{
-  width: 100%;
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 660px;
+  margin: 0 auto;
 }
 
-#piyo{
-  margin: 0 auto;
-  margin-top: 20px;
+.login-inner {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .service-name {
   width: 100%;
-  font-family: "Nikukyu"; 
+  height: 200px;
+  line-height: 200px;
+  font-family: "Nikukyu";
   font-size: 100px;
   color: rgb(141, 141, 3);
-  margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 form input,
 button {
   display: block;
   width: 100%;
+  border-radius: 5px;
+}
+
+label {
+  font-family: "メイリオ", "Meiryo", sans-serif;
+}
+
+.form-container {
+  width: 100%;
+  padding: 0 20%;
+}
+
+.input-box {
+  height: 60px;
+  margin-bottom: 20px;
+  border: 0;
 }
 
 .button-wrapper {
   display: flex;
+  flex-direction: column;
+}
+
+#login-btn {
+  display: block;
+  height: 40px;
+  margin: 20px 0 10px 0;
+
+  color: white;
+  background-color: rgb(141, 141, 3);
+  border: 0;
+
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#register-btn {
+  display: block;
+  width: auto;
+  height: 40px;
+  margin-bottom: 20px;
+
+  color: gray;
+  background-color: transparent;
+  border: 0;
+
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#register-btn:hover,
+#login-btn:hover {
+  opacity: 0.7;
 }
 
 .login-img {
@@ -44,7 +101,8 @@ button {
   object-fit: cover;
 }
 
-#login-form{
-  width: 50%;
+#piyo {
+  height: 15%;
   margin: 0 auto;
+  object-fit: contain;
 }

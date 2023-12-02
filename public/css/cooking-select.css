@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/earlyaccess/nikukyu.css);
-/*----- main -----*/
 .main-wrapper {
   display: flex;
   background-image: url(/images/tamago18-1280x720.png);
@@ -20,8 +18,6 @@
   border-bottom: 2px solid gray;
 }
 
-
-
 #cooking-contents {
   width: 100%;
   display: flex;
@@ -31,16 +27,14 @@
 .cooking-content {
   display: block;
   width: 31%;
+  color: black;
   background-color: white;
   padding: 10px;
   margin-right: 2%;
   margin-bottom: 30px;
   border: 1px solid gray;
   border-radius: 3px;
-  color: black;
 }
-
-
 
 .cooking-img {
   width: 100%;
@@ -73,11 +67,17 @@ form {
 
 #selected-wrapper {
   padding-bottom: 40px;
-  background-color: rgb(255, 255, 201);
-  min-height: 300px;
+  background-color: white;
+  min-height: 500px;
   margin-bottom: 50px;
+  border-radius: 5px;
+  border: 1px solid rgb(201, 199, 199);
+}
 
-  position: relative;
+#selected-wrapper p {
+  font-size: 20px;
+  padding: 10px;
+  border-bottom: 1px solid rgb(201, 199, 199);
 }
 
 #selected-list {
@@ -113,4 +113,10 @@ form {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
 }
