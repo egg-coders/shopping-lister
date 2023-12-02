@@ -16,8 +16,7 @@ class SQLControl
       SELECT id, name, img_url
       FROM
         recipes
-        WHERE name REGEXP ('#{key}')
-      LIMIT 12;
+        WHERE name REGEXP ('#{key}');
     }
     result = @client.query(select_statement)
 
