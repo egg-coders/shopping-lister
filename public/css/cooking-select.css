@@ -1,13 +1,12 @@
 .main-wrapper {
   display: flex;
-  background-image: url(/images/tamago18-1280x720.png);
 }
 
-.header-wrapper h1{
+.header-wrapper h1 {
   font-family: "Nikukyu";
   color: rgb(141, 141, 3);
   font-size: 40px;
-  }
+}
 
 .main-left {
   width: 70%;
@@ -32,8 +31,13 @@
   padding: 10px;
   margin-right: 2%;
   margin-bottom: 30px;
-  border: 1px solid gray;
+  border: 1px solid rgb(201, 199, 199);
   border-radius: 3px;
+  transition-duration: 0.3s;
+}
+
+.cooking-content:hover {
+  opacity: 0.7;
 }
 
 .cooking-img {
