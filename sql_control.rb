@@ -9,20 +9,19 @@ class SQLControl
     @client = Mysql2::Client.new(host: "localhost", username: "", password: "", database: "shopping_list")
   end
 
-  def get_search_result(word=[], id="")
+  def get_search_result(word=[])
     key = word.map {|w| "(.*" + w + ".*)"}.join("|")
     key = "(.*.*)" if key == "" || nil
     select_statement = %{
-      SELECT r.id AS recipe_id, r.name AS name, r.img_url AS img_url
+      SELECT id, name, img_url
       FROM
-        users AS u
-        INNER JOIN recipes AS r ON u.id = r.user_id
-        WHERE r.name REGEXP ('#{key}')
-      LIMIT 10;
+        recipes
+        WHERE name REGEXP ('#{key}')
+      LIMIT 12;
     }
     result = @client.query(select_statement)
 
-    result.to_a.to_json
+    result.to_a
   end
 
   def get_recipe_ingredient(recipes)
@@ -38,7 +37,7 @@ class SQLControl
 
     result = @client.query(select_statement)
 
-    result.to_a.to_json
+    result.to_a
   end
 
   def get_list_history(uid="")
@@ -58,8 +57,7 @@ class SQLControl
       ele["date"] = ele["date"].to_date
       ele
     end
-    result = create_list_history(sql_result).to_json
-
+    result = create_list_history(sql_result)
     result
   end
 
@@ -68,7 +66,7 @@ class SQLControl
     select_statement = %{}
     result = @client.query(select_statement)
 
-    result.to_a.to_json
+    result.to_a
   end
 
   # 画面4へ材料を送るときのsql
@@ -84,7 +82,7 @@ class SQLControl
 
     sql_result = @client.query(select_statement).to_a
     result = create_id_name_hash(sql_result)
-    result.to_json
+    result
   end
 
   def create_id_name_hash(array)
@@ -108,8 +106,49 @@ class SQLControl
           GROUP BY i.id, i.name, i.unit
     }
 
-    result = @client.query(select_statement).to_a.to_json
+    result = @client.query(select_statement).to_a
     result
+  end
+
+  def get_shopping_list_recipes(list_id)
+    select_statement = %{
+      SELECT r.id AS id, r.name AS name
+        FROM
+          shopping_lists AS l
+          INNER JOIN list_recipes AS lr ON l.id = lr.shopping_list_id
+          INNER JOIN recipes AS r ON r.id = lr.recipe_id
+          WHERE l.id = #{list_id}
+    }
+
+    sql_result = @client.query(select_statement).to_a
+    result = create_id_name_hash(sql_result)
+    return result
+  end
+
+  def get_shopping_list_ingredient(list_id)
+    select_statement = %{
+      SELECT i.id AS ingredient_id, i.name AS ingredient_name, i.unit AS unit, li.amount AS amount
+        FROM
+          shopping_lists AS l
+          INNER JOIN list_ingredients AS li ON l.id = li.shopping_list_id
+          INNER JOIN ingredients AS i ON i.id = li.ingredient_id
+          WHERE l.id = #{list_id}
+    }
+
+    sql_result = @client.query(select_statement).to_a
+    return sql_result
+  end
+
+  def get_list_memo(list_id)
+    select_statement = %{
+      SELECT memo
+        FROM
+          shopping_lists
+          WHERE id = #{list_id}
+    }
+
+    sql_result = @client.query(select_statement).to_a[0]["memo"]
+    return sql_result
   end
 
   def create_list_history(arr)
