@@ -2,12 +2,13 @@
 /*----- main -----*/
 .main-wrapper {
   display: flex;
-  background-image: url(/public/images/tamago18-1280x720.png);
+  background-image: url(/images/tamago18-1280x720.png);
 }
+
 .header-wrapper h1{
   font-family: "Nikukyu";
   color: rgb(141, 141, 3);
-  font-size: 50px;
+  font-size: 40px;
   }
 
 .main-left {
