@@ -10,8 +10,43 @@
   margin-bottom: 10px;
 }
 
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  background-color: rgb(255, 255, 201);
+  flex-grow: 1;
+}
+
+#zai{
+  background-color: rgb(255, 255, 201);
+}
+
+.main-wrapper{
+  flex-direction: column;
+}
+
 .material {
-  background-image: url(/images/tamago18-1280x720.png);
+  background-color: rgb(255, 255, 201);
+  text-align: center;
+}
+
+#recipe-name{
+  padding-left: 30%;
+  text-align: left;
+}
+
+#material-name{
+  padding-left: 30%;
+  text-align: left;
+}
+
+#delete-material{
+  padding-left: 30%;
+  text-align: left;
 }
 
 .feature{
@@ -21,16 +56,37 @@
   background-color: rgb(255, 255, 201);
   .Item1{
     width: calc(100%/2);
+    text-align: center;
   }
   .Item2{
     width: calc(100%/2);
+    text-align: center;
   }
   .Item3{
     width:100%;
+    text-align: left;
+    padding-left: 10%;
   }
 }
 
 .button{
-  background-image: url(/images/tamago18-1280x720.png);
-  text-align: center;
+  background-color: rgb(255, 255, 201);
+}
+
+.button input{
+  width: 10%;
+  display: block;
+  height: 40px;
+  margin: 20px 0 10px 0;
+  border: 0;
+  color: white;
+  background-color: rgb(197, 197, 2);
+  border: 0;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  margin: 0 auto;
+}
+
+.button input:hover{
+  opacity: 0.7;
 }
